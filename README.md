@@ -39,27 +39,26 @@ We have also prepared ["scripts"](https://github.com/Mangul-Lab-USC/benchmarking
 
 We have evaluated 5 datasets composed of raw reads and their respective true reads (gold standard).
 
-* D1 dataset: D1 was produced by computational simulations using a customized version of the tool WgSim. We generated simulated data mimicking the WGS human data using a customized version of the tool WgSim. Read coverage varied between 1 and 32. The WgSim fork is available at https://github.com/mandricigor/wgsim.
+* **D1 dataset**: D1 was produced by computational simulations using a customized version of the tool WgSim. We generated simulated data mimicking the WGS human data using a customized version of the tool WgSim. Read coverage varied between 1 and 32. The WgSim fork is available at https://github.com/mandricigor/wgsim.
 
 
 
-* D2 dataset: Raw reads corresponding to 8 samples (SRR1543964, SRR1543965, SRR1543966, SRR1543967, SRR1543968, SRR1543969, SRR1543970, and SRR1543971) were downloaded from https://www.ncbi.nlm.nih.gov/. The error-free (true) reads for the D2 dataset were generated using a UMI-based high-fidelity sequencing protocol, also known as safe-SeqS.
+* **D2 dataset**: Raw reads corresponding to 8 samples (SRR1543964, SRR1543965, SRR1543966, SRR1543967, SRR1543968, SRR1543969, SRR1543970, and SRR1543971) were downloaded from https://www.ncbi.nlm.nih.gov/. The error-free (true) reads for the D2 dataset were generated using a UMI-based high-fidelity sequencing protocol, also known as safe-SeqS.
 
 
 
-* D3 dataset: We generated simulated data mimicking the TCR-Seq data using the T cell receptor alpha chain (TCRA). Samples have read lengths of 100bp and read coverage varied between 1 and 32.
+* **D3 dataset**: We generated simulated data mimicking the TCR-Seq data using the T cell receptor alpha chain (TCRA). Samples have read lengths of 100bp and read coverage varied between 1 and 32.
 
 
 
-* D4 dataset: D4 corresponds to HIV population sequencing of an infected patient. The error-free (true) reads for the D4 dataset were generated using a UMI-based high-fidelity sequencing protocol.
+* **D4 dataset**: D4 corresponds to HIV population sequencing of an infected patient. The error-free (true) reads for the D4 dataset were generated using a UMI-based high-fidelity sequencing protocol.
 
 
 
-* D5 dataset: We prepared the viral dataset D5 using real sequencing data from NCBI with the accession number SRR961514. Each read was assigned to the reference with which it has a minimum number of mismatches. The original error rate in the dataset was 1.44%. We modified these reads as follows: first, we corrected the corresponding portion of errors with a corresponding reference nucleotides to obtain different levels of errors in the datasets (1.44%, 0.33%, 0.1%, 0.033%, 0.01% , 0.0033%, 0.001%, 0.00033%, 0.0001%); We also created datasets with mixtures of two haplotypes with the original 1.44% error rate but with different levels of diversity between haplotypes (Hamming distance=5.94%, 0.29%, 0.02%). We applied a haplotype-based error correction protocol to eliminate sequencing errors from the D5 dataset.
+* **D5 dataset**: We prepared the viral dataset D5 using real sequencing data from NCBI with the accession number SRR961514. Each read was assigned to the reference with which it has a minimum number of mismatches. The original error rate in the dataset was 1.44%. We modified these reads as follows: first, we corrected the corresponding portion of errors with a corresponding reference nucleotides to obtain different levels of errors in the datasets (1.44%, 0.33%, 0.1%, 0.033%, 0.01% , 0.0033%, 0.001%, 0.00033%, 0.0001%); We also created datasets with mixtures of two haplotypes with the original 1.44% error rate but with different levels of diversity between haplotypes (Hamming distance=5.94%, 0.29%, 0.02%). We applied a haplotype-based error correction protocol to eliminate sequencing errors from the D5 dataset.
 
 
 ## Notebooks and Figures
-["Notebooks"](https://github.com/Mangul-Lab-USC/benchmarking_error_correction/tree/master/notebooks)
 
 We have prepared Jupyter Notebooks that utilize the raw data described above to reproduce the results and figures presented in our [manuscript](https://www.biorxiv.org/content/early/2018/10/25/452532).
 
