@@ -12,7 +12,7 @@ This project contains the links to the datasets and the code that was used for o
 * [Reproducinf results](#reproducing-results)
   * [Tools](#tools)
   * [Data](#data)
-  * [Notebooks](#notebooks-and-figures)
+  * [Notebooks and Figures](#notebooks-and-figures)
 * [License](#license)
 * [Contact](#contact)
 
