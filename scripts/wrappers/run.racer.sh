@@ -9,7 +9,7 @@ AUTHOR="imandric1"
 ################################################################
 
 toolName="racer"
-toolPath="/u/home/n/ngcrawfo/project-zarlab/igor/VIRAL_CORRECTION/tools/racer/RACER"
+toolPath=""
 
 # STEPS OF THE SCRIPT
 # 1) prepare input if necessary
@@ -119,7 +119,7 @@ printf "%s --- TRANSFORMING OUTPUT DONE\n" "$now" >> $logfile
 
 # remove intermediate files
 
-rm $outdir/merged_input_file.fastq  
+rm $outdir/merged_input_file.fastq
 rm $outdir/one_output_file.fastq
 
 # --------------------------------------
@@ -127,6 +127,3 @@ rm $outdir/one_output_file.fastq
 
 
 printf "DONE" >> $logfile
-
-
-

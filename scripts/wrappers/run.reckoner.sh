@@ -9,7 +9,7 @@ AUTHOR="imandric1"
 ################################################################
 
 toolName="reckoner"
-toolPath="/u/home/b/blhill/local/bin/reckoner"
+toolPath=""
 
 # STEPS OF THE SCRIPT
 # 1) prepare input if necessary
@@ -115,7 +115,7 @@ printf "%s --- TRANSFORMING OUTPUT\n" "$now" >> $logfile
 cat $outdir_abs/one_input_file.corrected.fastq | gzip > $outdir/${toolName}_$(basename ${input1%.*})_${kmer}.corrected.fastq.gz
 rm $outdir_abs/one_input_file.corrected.fastq
 
-rm $outdir_abs/one_input_file.fastq  
+rm $outdir_abs/one_input_file.fastq
 rm $outdir_abs/one_input_file.log
 
 now="$(date)"
@@ -126,6 +126,3 @@ printf "%s --- TRANSFORMING OUTPUT DONE\n" "$now" >> $logfile
 
 
 printf "DONE" >> $logfile
-
-
-

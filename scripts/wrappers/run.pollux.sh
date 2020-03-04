@@ -9,7 +9,7 @@ AUTHOR="imandric1"
 ################################################################
 
 toolName="pollux"
-toolPath="/u/home/n/ngcrawfo/project-zarlab/igor/VIRAL_CORRECTION/tools/pollux/pollux"
+toolPath=""
 
 # STEPS OF THE SCRIPT
 # 1) prepare input if necessary
@@ -121,7 +121,7 @@ now="$(date)"
 printf "%s --- TRANSFORMING OUTPUT DONE\n" "$now" >> $logfile
 
 # remove intermediate files
-rm $outdir/extra.corrected  
+rm $outdir/extra.corrected
 rm $outdir/*.fastq.low
 
 # --------------------------------------
@@ -129,6 +129,3 @@ rm $outdir/*.fastq.low
 
 
 printf "DONE" >> $logfile
-
-
-

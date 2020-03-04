@@ -103,5 +103,5 @@ if __name__ == "__main__":
     out_dir = args['outdir']
     # filename = args['outdir']
 
-    filename='master_summary2.txt'
+    filename='master_summary.txt'
     append_summary(wrapper, kmer, read_data, base_data, ec_name, out_dir, filename)

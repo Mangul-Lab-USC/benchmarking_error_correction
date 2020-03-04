@@ -9,7 +9,7 @@ AUTHOR="imandric1"
 ################################################################
 
 toolName="fiona"
-toolPath="/u/home/n/ngcrawfo/project-zarlab/igor/VIRAL_CORRECTION/tools/fiona-0.2.8-Linux-x86_64/bin/fiona"
+toolPath=""
 
 # STEPS OF THE SCRIPT
 # 1) prepare input if necessary
@@ -126,6 +126,3 @@ rm $outdir/one_output_file.*
 
 
 printf "DONE" >> $logfile
-
-
-

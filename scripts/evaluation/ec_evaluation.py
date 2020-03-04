@@ -25,6 +25,9 @@ import subprocess
 import time
 
 
+muscle_path = "./muscle3.8.31_i86darwin64"
+temp_dir = "./temp"
+
 def msa(true_sequence, raw_sequence, ec_sequence, description):
     #TODO
     # create a temporary fasta for the msa to be performed on
@@ -33,7 +36,7 @@ def msa(true_sequence, raw_sequence, ec_sequence, description):
     id_msa = uuid.uuid4()
 
     # alter directory based on where temporary msas can go (this can use a lot of memory)
-    with open('./%s.fasta' %id_temp, 'w') as fasta:
+    with open(temp_dir+'/%s.fasta' %id_temp, 'w') as fasta:
         fasta.write(">TRUE\n")
         fasta.write(str(true_sequence) + '\n')
         fasta.write(">RAW\n")
@@ -42,27 +45,21 @@ def msa(true_sequence, raw_sequence, ec_sequence, description):
         fasta.write(str(ec_sequence) + '\n')
 
     # run the msa
-    subprocess.call(["./muscle3.8.31_i86darwin64","-quiet",
-                     "-in", "./%s.fasta" %id_temp,
-                     "-out", "./%s.fasta" %id_msa])
+    subprocess.call([muscle_path,"-quiet",
+                     "-in", temp_dir+"/%s.fasta" %id_temp,
+                     "-out", temp_dir+"/%s.fasta" %id_msa])
 
     # remove the temporary file from prior to the msa
-    os.remove("./%s.fasta" % id_temp)
+    os.remove(temp_dir+"/%s.fasta" % id_temp)
 
     # parse the msa file to get each sequences we care about
     aligned = {"RAW": '',"TRUE": '', "EC": ''}
-    fasta_msa = SeqIO.parse("./%s.fasta" % id_msa, 'fasta')
+    fasta_msa = SeqIO.parse(temp_dir+"/%s.fasta" % id_msa, 'fasta')
     for rec in fasta_msa:
         aligned[rec.description] = rec.seq
 
     # remove the temporary file from after the msa
-    os.remove("./%s.fasta" % id_msa)
-
-
-    #print (description)
-    #print ("True:", aligned["TRUE"])
-    #print ("Raw: ", aligned["RAW"])
-    #print ("EC:  ", aligned["EC"])
+    os.remove(temp_dir+"/%s.fasta" % id_msa)
 
     return aligned["TRUE"], aligned["RAW"], aligned["EC"]
 
@@ -151,14 +148,12 @@ def analyze_bases(true_read, raw_read, ec_read):
 
         else:
             message = "ERROR Base Evaluation Case Was Not Found."
-            #print (message)
             my_log(base_dir_join, cleaned_filename, message)
         pos_marker += 1
 
     length = len(true_read)
     if length != sum(stats_dict.values()):
         message = "ERROR in Base Level Evaluation Summary"
-        #print (message)
         my_log(base_dir_join, cleaned_filename, message)
     position_calls.update(trim_positions)
     return stats_dict, length, position_calls
@@ -173,31 +168,25 @@ def analyze_read(stats_dict, length):
 
     # If all bases are the TN then the read is a TN.
     if stats_dict['TN'] == non_trim_summary:
-        #print ("TN")
         return "TN"
 
     # If there are normal FP but no other FP(INDEL/trim) then the read is a normal FP.
     elif stats_dict['FP'] != 0 and stats_dict['FP INDEL'] == 0:
-        #print ("FP")
         return "FP"
 
     # Next if there are FP from INDEL then the read is as well.
     elif stats_dict['FP INDEL'] != 0:
-        #print ("FP INDEL")
         return "FP INDEL"
 
     # If there are any TP bases and no FN bases then the read is a TP
     elif stats_dict['TP'] != 0 and stats_dict['FN'] == 0 and stats_dict['FN WRONG'] == 0:
-        #print ("TP")
         return "TP"
 
     # Otherwise the read is a FN
     elif stats_dict['FN'] != 0 and stats_dict['FN WRONG'] == 0:
-        #print ("FN")
         return "FN"
 
     else:
-        #print ("FN WRONG")
         return "FN WRONG"
 
 
@@ -233,7 +222,6 @@ def handle_sequences(true_check, true_rec, two_raw, fastq_raw1_parser, fastq_raw
                 position_calls = base_counts[2]
                 length = base_counts[1]
                 base_stats = base_counts[0]
-                #print (base_stats)
                 read_class = analyze_read(base_stats, length)
 
 
@@ -250,7 +238,6 @@ def make_dict(parsed_fastq):
     dict = {}
     for rec in parsed_fastq:
         rec_id = rec.description.split()
-        #print (rec_id[0])
         dict[rec_id[0]] = rec.seq
     return dict
 

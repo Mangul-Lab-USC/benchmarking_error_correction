@@ -9,7 +9,7 @@ AUTHOR="imandric1"
 ################################################################
 
 toolName="bfc"
-toolPath="/u/home/d/douglasy/bfc/bfc"
+toolPath=""
 
 # STEPS OF THE SCRIPT
 # 1) prepare input if necessary
@@ -117,7 +117,7 @@ now="$(date)"
 printf "%s --- TRANSFORMING OUTPUT DONE\n" "$now" >> $logfile
 
 # remove intermediate files
-rm $outdir/merged_input_file.fastq  
+rm $outdir/merged_input_file.fastq
 rm $outdir/one_output_file.fastq
 
 
@@ -126,6 +126,3 @@ rm $outdir/one_output_file.fastq
 
 
 printf "DONE" >> $logfile
-
-
-

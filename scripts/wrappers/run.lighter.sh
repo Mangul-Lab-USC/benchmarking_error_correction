@@ -9,7 +9,7 @@ AUTHOR="Igor Mandric, Serghei Mangul, Brian Hill"
 ################################################################
 
 toolName="lighter"
-toolPath="/u/home/a/arvin/bin/lighter"
+toolPath=""
 
 # STEPS OF THE SCRIPT
 # 1) prepare input if necessary
@@ -121,7 +121,7 @@ now="$(date)"
 printf "%s --- TRANSFORMING OUTPUT DONE\n" "$now" >> $logfile
 
 # remove intermediate files
-rm $outdir/merged_input_file.cor.fq  
+rm $outdir/merged_input_file.cor.fq
 rm $outdir/merged_input_file.fastq
 
 # --------------------------------------
@@ -129,6 +129,3 @@ rm $outdir/merged_input_file.fastq
 
 
 printf "DONE" >> $logfile
-
-
-

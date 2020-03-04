@@ -4,7 +4,7 @@ import re
 
 dataset_name="summary"
 ####################################################
-data = pandas.read_csv("/Users/jaquejbrito/Dropbox/PosDoc/ErrorCorrection/"+dataset_name+"master_summary2.txt", index_col=False)
+data = pandas.read_csv("./master_summary.txt", index_col=False)
 ####################################################
 
 def tool_name(list):
@@ -43,23 +43,6 @@ def coverage(list):
     return coverage
 
 
-def dataset(list):
-    dataset_list = []
-    for item in list:
-        if "TRA" in item:
-            dataset_list.append("TRA")
-        elif "IGH" in item:
-            dataset_list.append("IGH")
-        elif "t1" in item:
-            dataset_list.append("T1")
-        elif "t3" in item:
-            dataset_list.append("T3")
-        elif "SRR" in item:
-            dataset_list.append("RSR")
-        else:
-            dataset_list.append("IGH")
-
-    return dataset_list
 
 print (data.head())
 data["Tool"] = tool_name(data["Wrapper Name"])
@@ -72,30 +55,13 @@ data["Base Gain"] = (data["Base - TP"] - (data["Base - FP"] + data["Base - FP IN
 
 data["Base Accuracy"] = (data["Base - TP"] + data["Base - TN"])/(data["Base - TP"] + data["Base - TN"] + data["Base - FP"] + data["Base - FN"] +
                                                                 data["Base - FP INDEL"] + data["Base - FP TRIM"] + data["Base - FN WRONG"])
-data["Dataset"] = dataset(data["EC Filename"])
 
 data["Trim Percent"] = (data["Base - TP TRIM"] + data["Base - FP TRIM"])/data["Total Bases"]
 
-
-data["Trim Effeciency"] = (data["Base - TP TRIM"]/data["Base - FP TRIM"])
-
-
-
-# z = data.groupby(["Tool", "Dataset", "Coverage"])["Base Sensitiviy"].mean()
-# y = data.groupby(["Tool", "Dataset", "Coverage"])["Base Precision"].mean()
-# x = data.groupby(["Tool", "Dataset", "Coverage"])["Base Gain"].mean()
-# y = y.fillna(1)
-# n = z.index
-
-# tra = data[(data["Dataset"]=="TRA")]
-# rsr = data[(data["Dataset"]=="RSR")]
-# t1 = data[(data["Dataset"]=="T1")]
-igh = data[(data["Dataset"]=="IGH")]
+data["Trim Efficiency"] = (data["Base - TP TRIM"]/data["Base - FP TRIM"])
 
 
 ####################################################
-# tra.to_csv("data/tra_from_master.csv")
-# rsr.to_csv("data/rsr_from_master.csv")
-# t1.to_csv("data/t1_from_master.csv")
-igh.to_csv("/Users/jaquejbrito/Dropbox/PosDoc/ErrorCorrection/"+dataset_name+"_summary.csv")
+
+data.to_csv("./summary.csv")
 ####################################################

@@ -9,7 +9,7 @@ AUTHOR="imandric1"
 ################################################################
 
 toolName="bless"
-toolPath="/u/home/s/serghei/code/import/bless/bless"
+toolPath=""
 
 # STEPS OF THE SCRIPT
 # 1) prepare input if necessary
@@ -125,11 +125,11 @@ printf "%s --- TRANSFORMING OUTPUT DONE\n" "$now" >> $logfile
 
 
 # remove intermediate files
-rm $outdir/one_output_file.bf.size      
-rm $outdir/one_output_file.histo.qs       
+rm $outdir/one_output_file.bf.size
+rm $outdir/one_output_file.histo.qs
 rm $outdir/one_output_file.kmc.input-list
-rm $outdir/one_output_file.bf.data   
-rm $outdir/one_output_file.histo.k-mer  
+rm $outdir/one_output_file.bf.data
+rm $outdir/one_output_file.histo.k-mer
 rm $outdir/one_output_file.kmc.*.log
 
 
@@ -138,6 +138,3 @@ rm $outdir/one_output_file.kmc.*.log
 
 
 printf "DONE" >> $logfile
-
-
-

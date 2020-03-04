@@ -9,7 +9,7 @@ AUTHOR="imandric1"
 ################################################################
 
 toolName="coral"
-toolPath="/u/home/d/douglasy/coral-1.4.1/coral"
+toolPath=""
 
 # STEPS OF THE SCRIPT
 # 1) prepare input if necessary
@@ -119,7 +119,7 @@ printf "%s --- TRANSFORMING OUTPUT DONE\n" "$now" >> $logfile
 
 
 # remove intermediate files
-rm $outdir/merged_input_file.fastq  
+rm $outdir/merged_input_file.fastq
 rm $outdir/one_output_file.fastq
 
 # --------------------------------------
@@ -128,6 +128,3 @@ rm $outdir/one_output_file.fastq
 
 
 printf "DONE" >> $logfile
-
-
-

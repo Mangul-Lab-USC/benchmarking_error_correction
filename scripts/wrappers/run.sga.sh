@@ -9,7 +9,7 @@ AUTHOR="imandric1"
 ################################################################
 
 toolName="sga"
-toolPath="/u/home/b/blhill/local/bin/sga"
+toolPath=""
 
 # STEPS OF THE SCRIPT
 # 1) prepare input if necessary
@@ -135,6 +135,3 @@ cd $pwd
 
 
 printf "DONE" >> $logfile
-
-
-
